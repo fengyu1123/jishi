@@ -1,0 +1,79 @@
+16:59:13 R <xml><ToUserName><![CDATA[gh_becc8ad7e4d0]]></ToUserName>
+<FromUserName><![CDATA[od68qw_mda1KyjjRVDDEHgPYUTdc]]></FromUserName>
+<CreateTime>1492073953</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>34.654705</Latitude>
+<Longitude>112.424919</Longitude>
+<Precision>40.000000</Precision>
+</xml>
+16:59:13 T <xml>
+					<ToUserName><![CDATA[od68qw_mda1KyjjRVDDEHgPYUTdc]]></ToUserName>
+					<FromUserName><![CDATA[gh_becc8ad7e4d0]]></FromUserName>
+					<CreateTime>1492073953</CreateTime>
+					<MsgType><![CDATA[text]]></MsgType>
+					<Content><![CDATA[]]></Content>
+					</xml>
+18:23:23 R <xml><ToUserName><![CDATA[gh_becc8ad7e4d0]]></ToUserName>
+<FromUserName><![CDATA[od68qw9PE_jibpIBD4zbxQC5DweI]]></FromUserName>
+<CreateTime>1492079003</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>22.574825</Latitude>
+<Longitude>114.054581</Longitude>
+<Precision>65.000000</Precision>
+</xml>
+18:23:23 T <xml>
+					<ToUserName><![CDATA[od68qw9PE_jibpIBD4zbxQC5DweI]]></ToUserName>
+					<FromUserName><![CDATA[gh_becc8ad7e4d0]]></FromUserName>
+					<CreateTime>1492079003</CreateTime>
+					<MsgType><![CDATA[text]]></MsgType>
+					<Content><![CDATA[]]></Content>
+					</xml>
+18:23:25 R <xml><ToUserName><![CDATA[gh_becc8ad7e4d0]]></ToUserName>
+<FromUserName><![CDATA[od68qw9PE_jibpIBD4zbxQC5DweI]]></FromUserName>
+<CreateTime>1492079004</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://qing.shenmikj.com/index.php/Home/Index/index.html]]></EventKey>
+<MenuId>507330059</MenuId>
+</xml>
+18:23:25 T <xml>
+					<ToUserName><![CDATA[od68qw9PE_jibpIBD4zbxQC5DweI]]></ToUserName>
+					<FromUserName><![CDATA[gh_becc8ad7e4d0]]></FromUserName>
+					<CreateTime>1492079005</CreateTime>
+					<MsgType><![CDATA[text]]></MsgType>
+					<Content><![CDATA[]]></Content>
+					</xml>
+18:31:18 R <xml><ToUserName><![CDATA[gh_becc8ad7e4d0]]></ToUserName>
+<FromUserName><![CDATA[od68qw9goCU_XbXoTUxclDmD85jA]]></FromUserName>
+<CreateTime>1492079477</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>42.435032</Latitude>
+<Longitude>-71.059547</Longitude>
+<Precision>150.000000</Precision>
+</xml>
+18:31:18 T <xml>
+					<ToUserName><![CDATA[od68qw9goCU_XbXoTUxclDmD85jA]]></ToUserName>
+					<FromUserName><![CDATA[gh_becc8ad7e4d0]]></FromUserName>
+					<CreateTime>1492079478</CreateTime>
+					<MsgType><![CDATA[text]]></MsgType>
+					<Content><![CDATA[]]></Content>
+					</xml>
+18:33:20 R <xml><ToUserName><![CDATA[gh_becc8ad7e4d0]]></ToUserName>
+<FromUserName><![CDATA[od68qw9goCU_XbXoTUxclDmD85jA]]></FromUserName>
+<CreateTime>1492079600</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>42.435032</Latitude>
+<Longitude>-71.059547</Longitude>
+<Precision>150.000000</Precision>
+</xml>
+18:33:20 T <xml>
+					<ToUserName><![CDATA[od68qw9goCU_XbXoTUxclDmD85jA]]></ToUserName>
+					<FromUserName><![CDATA[gh_becc8ad7e4d0]]></FromUserName>
+					<CreateTime>1492079600</CreateTime>
+					<MsgType><![CDATA[text]]></MsgType>
+					<Content><![CDATA[]]></Content>
+					</xml>
