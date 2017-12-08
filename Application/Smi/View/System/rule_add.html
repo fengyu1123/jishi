@@ -1,0 +1,98 @@
+<include file="Common/header" />
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <include file="Common/sidebar" />
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">系统设置</strong> <small></small></div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-4">
+                    <a href="__URL__/auth" class="am-btn am-btn-primary btn-loading-example">权限列表</a>
+                </div>
+            </div>
+            <!--  -->
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <form action="" method="post" class="am-form" data-am-validator>
+                        <fieldset>
+                            <legend>
+                                添加规则
+                            </legend>
+                            <div class="am-form-group">
+                                <label for="doc-vld-name-2">
+                                    规则标识 :
+                                </label>
+                                <input type="text" name="name"  placeholder="标识(Admin/Index/index)" required value="{$res['name']}"/>
+                                <input type="hidden" name="id" value="{$res['id']}">
+                            </div>
+                            <div class="am-form-group">
+                                <label for="doc-vld-name-2">
+                                    规则名称 :
+                                </label>
+                                <input type="text" name="title"  placeholder="如后台主页" required value="{$res['title']}"/>
+                            </div>
+                            <div class="am-form-group">
+                                <label>
+                                    认证方式：
+                                </label>
+                                <label class="am-radio-inline">
+                                <input type="radio" value="1"  name="type" required <eq name="res['type']" value="1"> checked </eq> >
+                                    实时
+                                </label>
+                                <label class="am-radio-inline">
+                                    <input type="radio" value="2" name="type" <eq name="res['type']" value="2"> checked </eq>>
+                                    登录
+                                </label>
+                            </div>
+                            <div class="am-form-group">
+                                <label>
+                                    状态：
+                                </label>
+                                <label class="am-radio-inline">
+                                    <input type="radio" value="1" name="status" required <eq name="res['status']" value="1"> checked </eq>>
+                                    启用
+                                </label>
+                                <label class="am-radio-inline">
+                                    <input type="radio" value="0" name="status" <eq name="res['status']" value="0"> checked </eq>>
+                                    禁用
+                                </label>
+                            </div>
+                            <button class="am-btn am-btn-secondary" type="submit">
+                                提交
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer class="admin-content-footer">
+            <hr>
+            <p class="am-padding-left">© 2017 AllMobilize, Inc. Licensed under MIT license.</p>
+        </footer>
+    </div>
+    <!-- content end -->
+</div>
+
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/smi/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/smi/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/smi/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/smi/js/app.js"></script>
+<script type="text/javascript">
+
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<include file="Common/header" />
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <include file="Common/sidebar" />
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">系统设置</strong> <small></small></div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-4">
+                    <a href="javascript: history.back();" class="am-btn am-btn-primary btn-loading-example">返回</a>
+                </div>
+            </div>
+            <!--  -->
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <form action="" method="post" class="am-form" data-am-validator>
+                        <fieldset>
+                            <legend>
+                                管理用户
+                            </legend>
+                            <div class="am-form-group">
+                                <label for="doc-vld-name-2">
+                                    账号
+                                </label>
+                                <input type="hidden" name="id" value="{$res['id']}">
+                                <input type="text" name="username"  placeholder="如：root" required value="{$res['name']}"/>
+                            </div>
+                            <div class="am-form-group">
+                                <label for="doc-vld-url-2">
+                                    密码：
+                                </label>
+                                <input type="password" name="password"  placeholder="输入网址"  autocomplete="off" />
+                            </div>
+                            <div class="am-form-group">
+                                <label for="doc-select-1">
+                                    管理组
+                                </label>
+                                <select name="auth" required>
+                                    <foreach name="group" item="vo">
+                                    <option value="{$vo['id']}" <eq name="res['auth']" value="$vo['id']"> selected="selected"</eq>>
+                                            {$vo['title']}
+                                        </option>
+                                    </foreach>
+                                </select>
+                                <span class="am-form-caret">
+                                </span>
+                            </div>
+                            <!-- <div class="am-form-group">
+                                <label>
+                                    状态：
+                                </label>
+                                <label class="am-radio-inline">
+                                    <input type="radio" value="1" name="status" required <eq name="res['status']" value="1"> checked </eq>>
+                                    启用
+                                </label>
+                                <label class="am-radio-inline">
+                                    <input type="radio" value="0" name="status" <eq name="res['status']" value="0"> checked </eq>>
+                                    禁用
+                                </label>
+                            </div> -->
+                            <button class="am-btn am-btn-secondary" type="submit">
+                                提交
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <include file="Common/footer_content" />
+    </div>
+    <!-- content end -->
+</div>
+
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<include file="Common/footer" />
+<script type="text/javascript">
+$(function(){
+    $("input[type='password']").val('');
+    $('#checkAll').on('change',function(){
+        var checkitem = $('.checkitem');
+        if($(this).prop('checked')){
+            checkitem.prop('checked',true);
+        }else{
+            checkitem.prop('checked',false);
+        }
+    })
+})
+
+</script>
+</body>
+
+</html>

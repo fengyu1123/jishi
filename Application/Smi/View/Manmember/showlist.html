@@ -1,0 +1,93 @@
+<include file="Common/header" />
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <include file="Common/sidebar" classname="am-in"/>
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">会员列表</strong></div>
+            </div>
+            <hr />
+            <div class="am-g">
+                <div class="am-u-sm-4">
+                    <form class="am-form-inline" action="{:U('Manmember/showlist')}" method="get" role="form">                      
+                        <div class="am-form-group">
+                            <input type="text" class="am-form-field" placeholder="关键词" name="keyword" value="{$_GET['keyword']}">
+                        </div>                       
+                        <button type="submit" class="am-btn am-btn-default">
+                            搜索
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <hr />
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <table class="am-table am-table-bd am-table-striped admin-content-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>OpenID</th>
+                                <th>昵称</th>
+                                <th>姓名</th>
+                                <th>性别</th>
+                                <th>年龄</th>
+                                <th>手机号</th>                           
+                                <th>初次登录时间</th>
+                                <th>预约</th>
+                                <th>消费</th>
+                                <th>消费金额</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="data" id="vo" k="key">
+                                <tr>
+                                    <td>{$key+1}</td>                                  
+                                    <td>{$vo['openid']}</td>
+                                    <td>{$vo['wx_nickname']}</td>
+                                    <td>{$vo['realname']}</td>
+                                    <td><switch name="vo.sex"> 
+                                        <case value="0">男</case>
+                                        <case value="1">女</case>
+                                        </switch>
+                                    </td>
+                                    <td>{$vo['age']}</td>
+                                    <td>{$vo['mobile']}</td>
+                                    <td>{$vo['createtime']|date='Y-m-d H:i',###}</td>
+                                    <!-- <td>{$vo['bug_num']}</td>
+                                    <td>{$vo['status']}</td>
+                                    <td>{$vo['total']}</td>
+                                    <td>{$vo['bug_num']}</td>
+                                    <td>{$vo['status']}</td> -->
+                                    <td>
+                                        <div class="am-dropdown" data-am-dropdown>
+                                            <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
+                                                <span class="am-icon-cog"></span>
+                                                <span class="am-icon-caret-down"></span>
+                                            </button>
+                                            <ul class="am-dropdown-content">
+                                                <!-- <li><a href="{:U('Category/addtype',array('id'=>$vo['id']))}">编辑</a></li> -->
+                                                <li><a href="{:U('Manmember/showdetial',array('id'=>$vo['id']))}">查看</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </volist>
+                        </tbody>
+                        <tr>
+                            <td colspan="9">{$page}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Common/footer_content" />
+</div>
+<!-- content end -->
+
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<include file="Common/footer" />

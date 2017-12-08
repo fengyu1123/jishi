@@ -1,0 +1,237 @@
+<include file="Common/header" />
+<style>
+.am-form-horizontal .am-form-label {
+    padding-top: 0;
+}
+</style>
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <include file="Common/sidebar" />
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加商品</strong></div>
+            </div>
+
+            <div class="am-g">
+              <form  method="post" action="{:U('Shop/edit')}" enctype="multipart/form-data">
+                <div class="am-u-md-10">
+                    <div class="am-tabs" data-am-tabs>
+                      <ul class="am-tabs-nav am-nav am-nav-tabs">
+                        <li class="am-active"><a href="#tab1">商品信息</a></li>
+                        <li><a href="#tab2">商品属性</a></li>
+                          <button type="submit" class="am-btn am-btn-primary am-fr">确认</button>
+                      </ul>
+
+                      <div class="am-tabs-bd">
+                        <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+                          <div class="am-form am-form-horizontal">
+                              <input type="hidden" name="id" value="{$data['id']}">
+                              <div class="am-form-group">
+                                  <label for="user-phone" class="am-u-sm-3 am-form-label">排序</label>
+                                  <div class="am-u-sm-9">
+                                      <input type="tel" name="displayorder" value="{$data['displayorder']}" id="user-phone" placeholder="排序 / 数字越大越靠前">
+                                  </div>
+                              </div>
+                              <div class="am-form-group">
+                                  <label for="user-email" class="am-u-sm-3 am-form-label">商品名称</label>
+                                  <div class="am-u-sm-9">
+                                      <input type="text" name="title" value="{$data['title']}" id="user-email" placeholder="商品名称">
+                                  </div>
+                              </div>
+                              <div class="am-form-group">
+                                  <label for="user-email" class="am-u-sm-3 am-form-label">分类</label>
+                                  <div class="am-u-sm-4">
+                                      <select id="category1" name="pcate">
+                                          <volist name="tydata" id="vo">
+                                              <option value="{$vo['id']}" <if condition="$data['pcate'] eq $vo['id']">selected="selected"</if> >{$vo['name']}</option>
+                                          </volist>
+                                      </select>
+                                  </div>
+                                  <div class="am-u-sm-4">
+                                      <select id="category2" name="ccate">
+                                          <option>请选择</option>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="am-form-group hidden" id="secendtype">
+                                  <label for="user-email" class="am-u-sm-3 am-form-label">售价</label>
+                                  <div class="am-u-sm-9">
+                                      <input type="text" name="price" value="{$data['price']}">
+                                  </div>
+                              </div>
+                              <div class="am-form-group hidden" id="secendtype">
+                                  <label for="user-email" class="am-u-sm-3 am-form-label">原价</label>
+                                  <div class="am-u-sm-9">
+                                      <input type="text" name="goosprice" value="{$data['goosprice']}">
+                                  </div>
+                              </div>
+                              <div class="am-form-group">
+                                  <label for="user-weibo" class="am-u-sm-3 am-form-label">属性</label>
+                                  <div class="am-u-sm-9 ">
+                                      <input type="radio" <if condition="$data['attr'] eq 1">checked </if> value="1" name="attr">新品
+                                      <input type="radio" <if condition="$data['attr'] eq 2">checked </if> value="2" name="attr">特价
+                                  </div>
+                              </div>
+                              <div class="am-form-group">
+                                  <label for="user-weibo" class="am-u-sm-3 am-form-label">状态</label>
+                                  <div class="am-u-sm-9">
+                                      未上架
+                                  </div>
+                              </div>
+                              <div class="am-form-group hidden" id="secendtype">
+                                  <label for="user-email" class="am-u-sm-3 am-form-label">库存数量</label>
+                                  <div class="am-u-sm-9">
+                                      <input type="text" name="total" value="{$data['total']}">
+                                  </div>
+                              </div>
+                              <div class="am-form-group">
+                                  <label for="user-QQ" class="am-u-sm-3 am-form-label">封面图片</label>
+                                  <div class="am-u-sm-9">
+                                      <input type="file" name="thumb" value="">
+                                  </div>
+                              </div>
+                              
+                              <div class="am-form-group hidden" id="secendtype">
+                                  <label for="user-email" class="am-u-sm-3 am-form-label">单位名称</label>
+                                  <div class="am-u-sm-9">
+                                      <input type="text" name="unit" value="{$data['unit']}">
+                                      <small>件/个/条/支</small>
+                                  </div>
+                              </div>
+                              <div class="am-form-group">
+                                  <label for="user-QQ" class="am-u-sm-3 am-form-label">虚拟销量</label>
+                                  <div class="am-u-sm-9">
+                                      <input type="text" name="virtu_num" value="{$data['virtu_num']}">
+                                  </div>
+                              </div>
+                              <div class="am-form-group">
+                                  <label for="user-weibo" class="am-u-sm-3 am-form-label">是否上架</label>
+                                  <div class="am-u-sm-9">
+                                      <input type="radio" <if condition="$data['status'] eq 1">checked </if> value="1" name="status">是
+                                      <input type="radio" <if condition="$data['status'] eq 2">checked </if> value="2" name="status">否
+                                  </div>
+                              </div>
+                              <div class="am-form-group">
+                                  <label for="user-intro" class="am-u-sm-3 am-form-label">商品描述</label>
+                                  <div class="am-u-sm-9">
+                                      <script id="container" name="content" type="text/plain">{$data['content']}</script>
+                                      
+                                      <!-- <textarea class="" rows="5" name="content" id="container user-intro" placeholder="商品描述"></textarea> -->
+                                  </div>
+                              </div>
+                              <div class="am-form-group">
+                                  <div class="am-u-sm-9 am-u-sm-push-3">
+                                      <button type="submit" class="am-btn am-btn-primary">确认</button>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                        <!-- 商品属性 -->
+                        <div class="am-tab-panel am-fade" id="tab2">
+                          <div class="am-tabs-bd">
+                            <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+                            <!-- 商品属性 -->
+                              <!-- <div class="am-g am-margin-top">
+                                <div class="am-u-sm-4 am-u-md-2 am-text-right">是否启用商品规格</div>
+                                <div class="am-u-sm-8 am-u-md-10">
+                                    <input type="checkbox" name="attributes" value="1">&nbsp;启用属性
+                                </div>
+                              </div> -->
+                              <div class="am-g am-margin-top">
+                                <div class="am-u-sm-12">
+                                    <table class="am-table am-table-bordered am-table-radius am-table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>属性名</th>
+                                                <th>属性值</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="attr-wrap">
+                                          <foreach  name="data['attributes']"  item="vo">
+                                            <tr class="attr-tr">
+                                                <td><input type="text" name="attributes[]"  class="am-form-field am-radius" value="{$key}" /></td>
+                                                <td><input type="text" name="attrvalue[]" class="am-form-field am-radius" value="{$vo}" /></td>
+                                            </tr>
+                                          </foreach >
+                                        </tbody>
+                                    </table>
+                                    <button type="button" id="addTabel" class="am-btn am-btn-primary">添加属性</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    
+                </div>
+                </form>
+            </div>
+        </div>
+        <include file="Common/footer_content" />
+    </div>
+    <!-- content end -->
+</div>
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<include file="Common/footer" />
+<!-- 编辑器 -->
+<!-- 加载编辑器的容器 -->
+<!-- 配置文件 -->
+<script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.js"></script>
+<script type="text/javascript">
+$(function() {
+    //实例化编辑器
+    var ue = UE.getEditor('container');
+    // var obj = <?php echo $typedata; ?>;
+    var obj = {$typedata};
+    $('#category1').change(function(e) {
+        var parentStr = "";
+        var dd = $(this).val();
+        $.each(obj, function(n, value) {
+            if (value.id == dd) {
+                $.each(value.secondary, function(j, va) {
+                    var trs = "";
+                    trs += "<option  value='" + va.id + "'>" + va.name + "</option> ";
+                    parentStr += trs;
+                })
+            }
+        });
+        $("#category2").empty().append(parentStr);
+    })
+    
+    var parentStr = "";
+    var isid = "{$data['pcate']}";
+    var iscid = "{$data['ccate']}";
+    // console.log(isid);
+    $.each(obj, function(n, value) {
+      if (value.id == isid) {
+          $.each(value.secondary, function(j, va) {
+              var trs = "";
+              if(iscid == va.id){
+                trs += "<option  selected='selected' value='" + va.id + "'>" + va.name + "</option> ";
+              }else{
+                trs += "<option  value='" + va.id + "'>" + va.name + "</option> ";
+              }
+              parentStr += trs;
+          })
+      }
+    });
+    $("#category2").empty().append(parentStr);
+    // console.log(obj);
+
+    // 增加表格项
+    $('#addTabel').on('click',function(){
+        var temp = `<tr class="attr-tr">
+                        <td><input type="text" name="attributes[]" class="am-form-field am-radius" placeholder="" /></td>
+                        <td><input type="text" name="attrvalue[]" class="am-form-field am-radius" placeholder="" /></td>
+                    </tr>`;
+        $('#attr-wrap').append(temp);
+    })
+})
+</script>

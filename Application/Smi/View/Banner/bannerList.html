@@ -1,0 +1,78 @@
+<include file="Common/header" />
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <include file="Common/sidebar" />
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">轮播图</strong> <small></small></div>
+            </div>
+            <hr/> &nbsp;&nbsp;&nbsp;
+            <a href="{:U('Banner/add_banner')}" class="am-btn am-btn-primary btn-loading-example">增加轮播图</a>
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <table class="am-table am-table-bd am-table-striped admin-content-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>轮播图</th>
+                                <th>类型</th>
+                                <th>链接地址</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <foreach name="banner" item="v">
+                                <tr>
+                                    <td>{$v['id']}</td>
+                                    <td><img src="__ROOT__/{$v['img']}" width="100PX" height="100px"/></td>
+                                    <td>
+                                        <if condition="$v['type'] eq 1">商城
+                                            <elseif condition="$v['type'] eq 2" />氢友圈</if>
+                                    </td>
+                                    <td>{$v['url']}</td>
+                                    <td>{$v['createtime']|date='Y-m-d',###}</td>
+                                    <td>
+                                        <a class="am-btn am-btn-default" href="{:U('Banner/banner_del',array('id'=>$v['id']))}">
+                                             删除
+                                        </a>
+                                        <a class="am-btn am-btn-default" href="{:U('Banner/banner_upd',array('id'=>$v['id']))}">
+                                             修改
+                                        </a>
+                                    </td>
+                                </tr>
+                            </foreach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <footer class="admin-content-footer">
+            <hr>
+            <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+        </footer>
+    </div>
+    <!-- content end -->
+</div>
+
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/smi/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/smi/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/smi/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/smi/js/app.js"></script>
+<script type="text/javascript">
+
+
+</script>
+</body>
+
+</html>

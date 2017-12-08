@@ -1,0 +1,238 @@
+<include file="Common/header" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=EhuoypllM4EzQvCN60MecOvFyGXVZcNs"></script>
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <include file="Common/sidebar" />
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加直营店/体验中心</strong> <small></small></div>
+            </div>
+            <form method="post" action="{:U('LineShop/add_store')}" enctype="multipart/form-data" class="am-form am-form-horizontal">
+                <div data-am-widget="tabs" class="am-tabs am-tabs-d2">
+                    <ul class="am-tabs-nav am-cf">
+                        <li class="am-active"><a href="[data-tab-panel-0]">直营店/体验中心</a></li>
+                        <li class=""><a href="[data-tab-panel-1]">现场图片</a></li>
+                        
+                    </ul>
+                    <div class="am-tabs-bd">
+                        <div data-tab-panel-0 class="am-tab-panel am-active">
+                            <div class="am-g">
+                                <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8"></div>
+                                <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+                                    <div class="am-form-group">
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">名称</label>
+                                        <div class="am-u-sm-9">
+                                            <input type="text" name="name" placeholder="直营店名称">
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                    <div class="am-form-group">
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">门店地址</label>
+                                        <div class="am-u-sm-9">
+                                            <div style="width:730px;margin:auto;">
+                                                <div id="container" style="
+                                                    margin: 30px 0;
+                                                    width: 730px; 
+                                                    height: 590px; 
+                                                    top: 50; 
+                                                    border: 1px solid gray;
+                                                    overflow:hidden;">
+                                                </div>
+                                                <input id="point_x" type="hidden" name="point_x" />
+                                                <input id="point_y" type="hidden" name="point_y" />
+                                                <div class="am-input-group">
+                                                    <input id="text_" class="am-form-field type=" text " value="深圳市宝安区 " placeholder="广东省深圳市龙华新区 " />
+                                               <span class="am-input-group-btn ">
+                                                <input type="button" class="am-btn am-btn-default " value="查询 " onclick="searchByStationName(); " />
+                                              </span>
+                                             
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    </div>
+                                    
+                                    <div class="am-form-group hidden " id="secendtype ">
+                                        <label for="user-email " class="am-u-sm-3 am-form-label ">类别</label>
+                                        <div class="am-u-sm-9 ">
+                                            <select name="level">
+                                                <option value="1 " selected="selected ">直营店</option>
+                                                <option value="2 ">体验中心</option>
+                                            </select>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                    <div class="am-form-group">
+                                        <label for="user-email " class="am-u-sm-3 am-form-label ">编号</label>
+                                        <div class="am-u-sm-9 ">
+                                            <input type="text" class="am-form-field" name="storesn " placeholder="编号 ">
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                    <div class="am-form-group ">
+                                        <label for="user-phone " class="am-u-sm-3 am-form-label ">账号</label>
+                                        <div class="am-u-sm-9 ">
+                                            <input type="tel" class="am-form-field" name="username" placeholder="账号 ">
+                                        </div>
+                                    </div>
+                                    <div class="am-form-group ">
+                                        <label for="user-QQ " class="am-u-sm-3 am-form-label ">密码</label>
+                                        <div class="am-u-sm-9 ">
+                                            <input type="password" class="am-form-field" name="password" value="">
+                                        </div>
+                                    </div>
+                                    <div class="am-form-group">
+                                        <label for="user-weibo" class="am-u-sm-3 am-form-label ">固定电话</label>
+                                        <div class="am-u-sm-9">
+                                            <input type="text" class="am-form-field" name="phone" placeholder="固定电话">
+                                        </div>
+                                    </div>
+                                    <div class="am-form-group">
+                                        <label for="user-weibo" class="am-u-sm-3 am-form-label">负责人</label>
+                                        <div class="am-u-sm-9">
+                                            <select name="member_uid">
+                                                <foreach name="member" item="v">
+                                                    <option value="{$v[ 'uid']}" selected="selected">{$v['wx_nickname']}</option>
+                                                </foreach>
+                                            </select>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                    <div class="am-form-group">
+                                        <label for="user-weibo" class="am-u-sm-3 am-form-label">员工</label>
+                                        <div class="am-u-sm-9">
+                                            <select name="emp_uid">
+                                                <option value="1" selected="selected ">直营店</option>
+                                                <option value="2">体验中心</option>
+                                            </select>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+                                    <div class="am-form-group">
+                                        <label for="user-weibo" class="am-u-sm-3 am-form-label">职位</label>
+                                        <div class="am-u-sm-9">
+                                            <select name="emp_job">
+                                                <option value="1" selected="selected">直营店</option>
+                                                <option value="2">体验中心</option>
+                                            </select>
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                    <div class="am-form-group">
+                                        <label for="user-weibo" class="am-u-sm-3 am-form-label">规模</label>
+                                        <div class="am-u-sm-9">
+                                            <input type="text" class="am-form-field" name="isrecommand" placeholder="规模">
+                                        </div>
+                                    </div>
+                                    <div class="am-form-group">
+                                        <label for="user-weibo" class="am-u-sm-3 am-form-label">启用/禁用</label>
+                                        <div class="am-u-sm-9">
+                                            <input type="radio" value="0" name="status" checked="checked"> 禁用
+                                            <input type="radio" value="1" name="status"> 开放
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                          
+                        </div>
+                        <div data-tab-panel-1 class="am-tab-panel">
+                            <div class="am-form-group am-form-file">
+                                <button type="button" class="am-btn am-btn-danger am-btn-sm"> <i class="am-icon-cloud-upload"></i>
+                                    选择要上传的文件
+                                </button>
+                                <input id="doc-form-file" type="file" multiple  name="img[]"></div>
+                            <div id="file-list"></div>
+                           
+                        </div>
+
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <div class="am-u-sm-9">
+                        <button type="submit" class="am-btn am-btn-primary" id="confirm">确认</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <footer class="admin-content-footer">
+            <hr>
+            <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+        </footer>
+    </div>
+    <!-- content end -->
+</div>
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js "></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js "></script>
+<script src="__PUBLIC__/smi/js/amazeui.ie8polyfill.min.js "></script>
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/smi/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/smi/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/smi/js/app.js"></script>
+<script src="__PUBLIC__/smi/js/jquery.min.js"></script>
+<script type="text/javascript">
+    //js验证
+    $(function(){
+         $("#confirm").click(function(){
+              var name = $("input[name='name']").val();
+              var img  = $("input[name='img']").val();
+              console.log(img);
+              die;
+              if(name == ''){
+                 alert('直营店/体验店不能为空');
+                 return false;
+              }
+              if(img == ''){
+                 alert('请上传图片');
+                 return false;
+              }
+         })
+    })
+    var map = new BMap.Map("container");
+    map.centerAndZoom("深圳市", 12);
+    map.enableScrollWheelZoom(); //启用滚轮放大缩小，默认禁用
+    map.enableContinuousZoom(); //启用地图惯性拖拽，默认禁用
+    map.addControl(new BMap.NavigationControl()); //添加默认缩放平移控件
+    map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
+    map.addControl(new BMap.OverviewMapControl({
+        isOpen: true,
+        anchor: BMAP_ANCHOR_BOTTOM_RIGHT
+    })); //右下角，打开
+
+    var localSearch = new BMap.LocalSearch(map);
+    localSearch.enableAutoViewport(); //允许自动调节窗体大小
+    function searchByStationName() {
+        map.clearOverlays(); //清空原来的标注
+        var keyword = document.getElementById("text_").value;
+        localSearch.setSearchCompleteCallback(function(searchResult) {
+            var poi = searchResult.getPoi(0);
+            //console.log(poi);
+            document.getElementById("point_x").value = poi.point.lng;
+            document.getElementById("point_y").value = poi.point.lat;
+            map.centerAndZoom(poi.point,13);
+            var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat)); 
+            // 创建标注，为要查询的地方对应的经纬度
+            map.addOverlay(marker);
+            var content = document.getElementById("text_").value + "<br/> <br/>经度：" + poi.point.lng + "<br/>纬度：" + poi.point.lat; 
+            var infoWindow = new BMap.InfoWindow("<p style='font-size:14px;'>" + content + "</p>"); 
+            marker.addEventListener("click", function() { 
+                this.openInfoWindow(infoWindow); 
+            }); 
+            marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画 
+        }); 
+        localSearch.search(keyword); 
+    }
+   
+</script>
+</body>
+
+</html>

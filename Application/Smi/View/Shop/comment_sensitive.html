@@ -1,0 +1,154 @@
+<include file="Common/header" />
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <include file="Common/sidebar" />
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf">
+                    <strong class="am-text-primary am-text-lg">氢品圈管理</strong> 
+                    <small></small>
+                </div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-5">
+                    <a id="doc-prompt-toggle" class="am-btn am-btn-primary btn-loading-example">添加敏感词</a>
+                </div>
+                <!-- <div class="am-u-sm-4">
+                    <form class="am-form-inline" action="" method="get" role="form">
+                        <div class="am-form-group">
+                            <input type="text" class="am-form-field" placeholder="关键词" name="keyword" value="{$_GET['keyword']}">
+                        </div>
+                        <button type="submit" class="am-btn am-btn-default">
+                            搜索
+                        </button>
+                    </form>
+                </div> -->
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <table class="am-table am-table-bd am-table-striped admin-content-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>词</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <foreach name="list" item="v">
+                                <tr>
+                                    <td>{$v['id']}</td>
+                                    <td>{$v['name']}</td>
+                                    
+                                    <td>{$v['createtime']|date='Y-m-d H:i:s',###}</td>
+                                    <td>
+                                        <ul class="am-nav am-nav-pills">
+                                            <li class="am-dropdown" data-am-dropdown>
+                                                <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                                                    <span class="am-icon-cog"></span>
+                                                </a>
+                                                <ul class="am-dropdown-content">
+                                                   <!--  <li class="am-dropdown-header">详情</li> -->
+                                                   <li><a data-id="{$v['id']}" data-name="{$v['name']}" class="update">1.修改</a></li>
+                                                    <li><a href="__URL__/del_sensitive/id/{$v['id']}/p/{$_GET['p']}">2.删除</a></li>
+                                                    <!-- <li class="am-disabled"><a href="#">4. 云端跨平台适配</a></li> -->
+                                                  </ul>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </foreach>
+                        </tbody>
+                    </table>
+                    {$page}
+                </div>
+            </div>
+        </div>
+        <footer class="admin-content-footer">
+            <hr>
+            <p class="am-padding-left">© 2017 AllMobilize, Inc. Licensed under MIT license.</p>
+        </footer>
+    </div>
+    <!-- content end -->
+</div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd title">
+            Amaze UI
+        </div>
+        <form id="sensitive" action="" method="post">
+            <div class="am-modal-bd">
+                    敏感词
+                    <input type="text" name="name" class="am-modal-prompt-input">
+                    <input type="hidden" name="op" >
+                    <input type="hidden" name="id" >
+                
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>
+                    取消
+                </span>
+                <span class="am-modal-btn" data-am-modal-confirm>
+                    提交
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/smi/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/smi/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/smi/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/smi/js/app.js"></script>
+<script type="text/javascript">
+
+$(function() {
+    $('#doc-prompt-toggle').on('click',
+    function() {
+        $(".title").html('添加敏感词');
+        $("input[name=op]").val('add');
+        $('#my-prompt').modal({
+            relatedTarget: this,
+            onConfirm: function(e) {
+                /*alert('你输入的是：' + e.data || '')*/
+                $("#sensitive").submit();
+            },
+            onCancel: function(e) {
+                /*alert('不想说!');*/
+            }
+        });
+    });
+    $('.update').on('click',
+    function() {
+        var id = $(this).attr("data-id");
+        var name = $(this).attr("data-name");
+        $(".title").html('修改敏感词');
+        $("input[name=op]").val('update');
+        $("input[name=name]").val(name);
+        $("input[name=id]").val(id);
+        $('#my-prompt').modal({
+            relatedTarget: this,
+            onConfirm: function(e) {
+                /*alert('你输入的是：' + e.data || '')*/
+                $("#sensitive").submit();
+            },
+            onCancel: function(e) {
+                /*alert('不想说!');*/
+            }
+        });
+    });
+});
+</script>
+</body>
+
+</html>

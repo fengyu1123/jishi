@@ -1,0 +1,157 @@
+<include file="Common/header" />
+<style>
+    .am-btn {
+        margin-right: 10px;
+    }
+</style>
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <include file="Common/sidebar" classname="am-in" />
+    
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">商品分类管理</strong></div>
+            </div>
+            <hr />
+            <div class="am-g">
+                <div class="am-u-sm-6">
+                   <a href="{:U('Category/addtype')}">
+                       <button type="button" class="am-btn am-btn-secondary">添加分类</button>
+                   </a> 
+                </div>
+            </div>
+            <hr />
+            <!-- <div class="am-g">
+                <div class="am-u-sm-12">
+                    <table class="am-table am-table-bd am-table-striped admin-content-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>图片</th>
+                                <th>类名</th>
+                                <th>地址</th>
+                                <th>是否开启</th>
+                                <th>是否推荐</th>
+                                <th>添加时间</th>
+                                <th>排序</th>
+                                <th>管理</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="data" id="vo">
+                                <tr>
+                                    <td>{$vo['id']}</td>
+                                    <td><img src="__ROOT__/Uploads/{$vo['thumb']}" height="20"></td>
+                                    <td>{$vo['name']}</td>
+                                    <td>{$vo['link']}</td>
+                                    <td>{$vo['enabled']}</td>
+                                    <td>{$vo['isrecommand']}</td>
+                                    <td>{$vo['createtime']|date="Y-m-d H:i",###}</td>
+                                    <td>{$vo['displayorder']}</td>
+                                    <td>
+                                        <div class="am-dropdown" data-am-dropdown>
+                                            <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
+                                                <span class="am-icon-cog"></span>
+                                                <span class="am-icon-caret-down"></span>
+                                            </button>
+                                            <ul class="am-dropdown-content">
+                                                <li><a href="{:U('Category/addtype',array('id'=>$vo['id']))}">编辑</a></li>
+                                                <li><a href="{:U('Category/deletetype',array('id'=>$vo['id']))}" onclick="if(confirm('确定删除该分类吗？')==false)return false;">删除</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </volist>
+                        </tbody>
+                        <tr>
+                            <td colspan="9">{$page}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div> -->
+            <div class="am-g">
+                <div class="am-u-sm-8">
+                    <ul class="am-list admin-sidebar-list" id="collapase-category">
+                        <volist name="data" id="vo">
+                          <li class="am-panel">
+                            <div class="am-panel-hd" data-am-collapse="{parent: '#collapase-category', target: '#user-nav-{$vo['id']}'}">
+                                <div class="am-g">
+                                    <div class="am-u-sm-10">
+                                        {$vo.name}
+                                    </div>
+                                    <div class="am-u-sm-2">
+                                        <!-- <button class="am-btn am-btn-xs am-btn-primary">
+                                          <i class="am-icon-plus"></i>
+                                          添加
+                                        </button>
+                                        <button class="am-btn am-btn-xs">
+                                          <i class="am-icon-edit"></i>
+                                          编辑
+                                        </button>
+                                        <button class="am-btn am-btn-xs am-btn-danger">
+                                          <i class="am-icon-close"></i>
+                                          删除
+                                        </button> -->
+                                        <div class="am-dropdown" data-am-dropdown>
+                                            <button class="am-btn am-btn-primary am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
+                                                <span class="am-icon-cog"></span>
+                                                <span class="am-icon-caret-down"></span>
+                                            </button>
+                                            <ul class="am-dropdown-content">
+                                                <li><a href="{:U('Category/addtype',array('id'=>$vo['id']))}">添加</a></li>
+                                                <li><a href="{:U('Category/edit_type',array('id'=>$vo['id']))}">编辑</a></li>
+                                                <li><a href="{:U('Category/deletetype',array('id'=>$vo['id']))}" onclick="if(confirm('确定删除该分类吗？')==false)return false;">删除</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="am-list am-collapse admin-sidebar-sub" id="user-nav-{$vo['id']}">
+                                <volist name="vo['Tdata']" id="v">
+                                <li class="am-panel-hd">
+                                    <div class="am-g">
+                                        <div class="am-u-sm-10">
+                                            {$v.name}
+                                        </div>
+                                        <div class="am-u-sm-2">
+                                            <div class="am-dropdown" data-am-dropdown>
+                                            <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
+                                                <span class="am-icon-cog"></span>
+                                                <span class="am-icon-caret-down"></span>
+                                            </button>
+                                            <ul class="am-dropdown-content">
+                                                <li><a href="{:U('Category/edit_type',array('id'=>$v['id']))}">编辑</a></li>
+                                                <li><a href="{:U('Category/deletetype',array('id'=>$v['id']))}" onclick="if(confirm('确定删除该分类吗？')==false)return false;">删除</a></li>
+                                            </ul>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                </volist>
+                            </ul>
+                          </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        <include file="Common/footer_content" />
+    </div>
+    <!-- content end -->
+</div>
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<include file="Common/footer" />
+<script>
+    $(function(){
+        $('.am-btn').on('click',function(e){
+            e.stopPropagation();
+        })
+        $('.am-dropdown-content').on('click',function(e){
+            e.stopPropagation();
+        })
+    })
+</script>

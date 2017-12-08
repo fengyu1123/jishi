@@ -1,0 +1,189 @@
+<div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+    <div class="am-offcanvas-bar admin-offcanvas-bar">
+        <ul class="am-list admin-sidebar-list" id="collapase-nav-1">
+            <li class="am-panel">
+                <a href="javascript:;">
+                    <span class="am-icon-home"></span>首页</a>
+            </li>
+            <li class="am-panel">
+                <a class="am-cf" data-am-collapse="{parent: '#collapase-nav-1',target: '#collapse-nav'}">
+                    <span class="am-icon-file"></span>页面模块
+                    <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                </a>
+                <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav">
+                    <li>
+                        <a href="admin-user.html" class="am-cf">
+                            <span class="am-icon-check"></span>个人资料
+                            <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a>
+                    </li>
+                    <li>
+                        <a href="admin-help.html">
+                            <span class="am-icon-puzzle-piece"></span>帮助页</a>
+                    </li>
+                    <li>
+                        <a href="admin-gallery.html">
+                            <span class="am-icon-th"></span>相册页面
+                            <span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a>
+                    </li>
+                    <li>
+                        <a href="admin-log.html">
+                            <span class="am-icon-calendar"></span>系统日志</a>
+                    </li>
+                    <li>
+                        <a href="admin-404.html">
+                            <span class="am-icon-bug"></span>404</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="am-panel">
+                <a class="am-cf" data-am-collapse="{target: '#Shop-nav-shop'}">
+                    <span class="am-icon-file"></span>商品管理
+                    <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub [classname] <if condition="CONTROLLER_NAME eq 'Shop'">am-in</if>" id="Shop-nav-shop">
+                    <!-- <li> -->
+                        <!-- <a href="{:U('Category/shoptype')}" class="am-cf"> -->
+                            <!-- <span class="am-icon-th"></span>商品分类管理 -->
+                            <!-- <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a> -->
+                    <!-- </li> -->
+                    <li>
+                        <a href="{:U('Shop/shoplist')}" class="am-cf">
+                            <span class="am-icon-check"></span>商品列表
+                            <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a>
+                    </li>                    
+                </ul>
+            </li>
+            <!-- <li class="am-panel">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-nav-member'}">
+                    <span class="am-icon-file"></span>会员管理
+                    <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub [classname]" id="collapse-nav-member">
+                    <li>
+                        <a href="{:U('Manmember/showlist')}" class="am-cf">
+                            <span class="am-icon-th"></span>会员列表
+                            <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a>
+                    </li>                 
+                </ul>
+            </li>
+            <li class="am-panel">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-nav-credit'}">
+                    <span class="am-icon-file"></span>积分管理
+                    <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub [classname]" id="collapse-nav-credit">
+                    <li>
+                        <a href="{:U('Mancredit/creditlist')}" class="am-cf">
+                            <span class="am-icon-th"></span>积分列表
+                            <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a>
+                    </li>                 
+                </ul>
+            </li> -->
+
+            <!-- <li class="am-panel">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-nav-city'}">
+                    <span class="am-icon-file"></span>城市管理
+                    <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav-city">
+                    <li>
+                        <a href="{:U('City/citylist')}" class="am-cf">
+                            <span class="am-icon-th"></span>城市设置
+                            <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a>
+                    </li>
+                    <li>
+                        <a href="{:U('Shop/shoplist')}" class="am-cf">
+                            <span class="am-icon-check"></span>预约方式管理
+                            <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="am-panel">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-nav-line'}">
+                    <span class="am-icon-file"></span>门店管理
+                    <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav-line">
+                    <li>
+                        <a href="{:U('LineShop/storeList')}" class="am-cf">
+                            <span class="am-icon-th"></span>直营店管理
+                            <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a>
+                    </li>
+                    <li>
+                        <a href="{:U('LineShop/ex_center')}" class="am-cf">
+                            <span class="am-icon-check"></span>体验中心管理
+                            <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="am-panel">
+                <a class="am-cf" data-am-collapse="{target: '#friends-nav-line'}">
+                    <span class="am-icon-file"></span>氢友圈管理
+                    <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <ul class="am-list am-collapse admin-sidebar-sub <if condition="CONTROLLER_NAME eq 'Friends'">am-in</if>" id="friends-nav-line">
+                    <li>
+                        <a href="{:U('Friends/index')}" class="am-cf">
+                            <span class="am-icon-twitter"></span>氢体验
+                            <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a>
+                    </li>
+                    <li>
+                        <a href="{:U('Friends/activity')}" class="am-cf">
+                            <span class="am-icon-twitter"></span>氢活动
+                            <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a>
+                    </li>
+                </ul>
+            </li> -->
+            <li class="am-panel">
+                <a class="am-cf" data-am-collapse="{target: '#server-nav-line'}">
+                    <span class="am-icon-file"></span>自助客服
+                    <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub" id="server-nav-line">
+                    <li>
+                        <a href="{:U('Selfhelp/index')}" class="am-cf">
+                            <span class="am-icon-twitter"></span>常见问题
+                            <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a>
+                    </li>
+                    <!-- <li>
+                        <a href="javascript:;" class="am-cf">
+                            <span class="am-icon-twitter"></span>氢活动
+                            <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a>
+                    </li> -->
+                </ul>
+            </li>
+            
+            
+            <li class="am-panel">
+                <a class="am-cf" data-am-collapse="{target: '#Prize-nav-shop'}">
+                    <span class="am-icon-file"></span>中奖列表
+                    <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub [classname] <if condition="CONTROLLER_NAME eq 'Prize'">am-in</if> "  id="Prize-nav-shop">
+                    <li>
+                        <a href="{:U('Prize/index')}" class="am-cf">
+                            <span class="am-icon-th"></span>中奖订单
+                            <span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a>
+                    </li>
+                    
+                </ul>
+            </li>
+            <li class="am-panel">
+                <a data-am-collapse="{target: '#Prize-nav-chart'}" class="am-collapsed">
+                    <span class="am-icon-file"></span>决策支持
+                    <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub <if condition="CONTROLLER_NAME eq 'Prize'">am-in</if>" id="Prize-nav-chart">
+                    <li>
+                        <a href="{:U('Data/order_count')}">
+                            <span class="am-icon-table"></span>订单统计
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:U('Data/member_grow')}">
+                            <span class="am-icon-table"></span>会员增长趋势
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:U('Data/member_follow')}">
+                            <span class="am-icon-table"></span>关注统计
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        
+    </div>
+</div>
+

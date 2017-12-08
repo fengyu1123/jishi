@@ -1,0 +1,88 @@
+<include file="Common/header"/>
+   <div class="am-cf admin-main">
+<include file="Common/sidebar"/>
+   <div class="admin-content">
+    <div class="admin-content-body">
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">开通区域</strong>  <small></small></div>
+        </div>
+      <hr/>
+	<body>
+		
+		<form class="am-form am-padding-sm" action="{:U('City/city_add')}" method="post">
+			<h1>选择</h1>
+			省份
+			
+			<select data-am-selected name="province"  id="province" >
+				<option value="{$default_prov['code']}">{$default_prov['name']}</option>
+				<foreach name="province" item="v">
+					<option value="{$v['code']}" <if condition="$v['code'] eq 440000">selected="selected"</if> >{$v['name']}</option>
+				</foreach>
+			</select>
+			城市
+			<select data-am-selected name="city"  id="city" >
+			    <foreach name="default_city" item="v">
+				<option value="{$v['code']}" <if condition="$v['code'] eq 440300">selected="selected"</if>>{$v['name']}</option>
+			   </foreach>
+			</select>
+			区域
+			<select data-am-selected name="county"  id="county" multiple="multiple">
+			    <foreach name="default_area" item="v">
+				  <option value="{$v['code']}" <if condition="$v['code'] eq 440303">selected="selected"</if>>{$v['name']}</option>
+			    </foreach>
+			</select>
+			
+		</form>
+		</div>
+		</div>
+	</div>
+
+		<script src="__PUBLIC__/smi/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__PUBLIC__/smi/js/amazeui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__PUBLIC__/smi/js/iscroll.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__PUBLIC__/smi/js/address.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript">
+		//三级联动 城市，
+			$('#province').change(function(){
+              	var code = $("#province option:selected").val()
+              	$.ajax({
+		            type: "POST",
+		            url:"{:U('City/city_select')}",
+		            data: {'prov_code':code},
+		            success: function(data){
+	               		var city = "";
+					   	$(data).each(function(i, item){ 
+					   		city += "<option value='"+item.code+"'>"+item.name+"</option>"
+						});
+						$("#city").empty().append(city);
+	                  }
+                	});
+	            }
+			)
+
+       //三级联动区域
+			$('#city').change(function(){
+
+              	var code = $("#city option:selected").val()
+              	$.ajax({
+		            type: "POST",
+		            url:"{:U('City/area_select')}",
+		            data: {'city_code':code},
+		            success: function(data){
+	               		var area = "";
+					   	$(data).each(function(i, item){ 
+					   		console.log(item);
+					   		area += "<option value='"+item.code+"'>"+item.name+"</option>"
+						});
+						$("#county").empty().append(area);
+	                  }
+                	});
+	            }
+			)
+                 
+			
+		</script>
+	</body>
+
+</html>

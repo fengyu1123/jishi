@@ -1,0 +1,108 @@
+<include file="Common/header" />
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <include file="Common/sidebar" />
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">系统设置</strong> <small></small></div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-4">
+                    <a href="javascript: history.back();" class="am-btn am-btn-primary btn-loading-example">返回</a>
+                </div>
+            </div>
+            <!--  -->
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <form action="" method="post" class="am-form" data-am-validator>
+                        <fieldset>
+                            <legend>
+                                管理员组
+                            </legend>
+                            <div class="am-form-group">
+                                <label for="doc-vld-name-2">
+                                    管理组名
+                                </label>
+                                <input type="hidden" name="id" value="{$res['id']}">
+                                <input type="text" name="title"  placeholder="如：商城管理" required value="{$res['title']}"/>
+                            </div>
+                            <div class="am-form-group">
+                                <label>
+                                    状态：
+                                </label>
+                                <label class="am-radio-inline">
+                                    <input type="radio" value="1" name="status" required <eq name="res['status']" value="1"> checked </eq>>
+                                    启用
+                                </label>
+                                <label class="am-radio-inline">
+                                    <input type="radio" value="0" name="status" <eq name="res['status']" value="0"> checked </eq>>
+                                    禁用
+                                </label>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-form-label">
+                                    权限：
+                                </label>
+                                <label class="am-checkbox-inline">
+                                    <input type="checkbox" id="checkAll" >
+                                    全选
+                                </label>
+                                <if condition="count($res['rules']) gt 0">
+                                    <volist name="rules" id="vo">
+                                        
+                                            <label class="am-checkbox-inline">
+                                            <input type="checkbox" class="checkitem" value="{$vo['id']}"  name="rules[]"   
+                                                <volist name="res['rules']" id="item">
+                                                <eq name="vo['id']" value="$item">
+                                                checked="checked"</eq>
+                                                </volist>
+                                                >
+                                                {$vo['title']}
+                                            </label>
+                                        
+                                    </volist>
+                                <else />
+                                    <volist name="rules" id="item">
+                                        <label class="am-checkbox-inline">
+                                            <input type="checkbox" class="checkitem" value="{$item['id']}" name="rules[]">
+                                            {$item['title']}
+                                        </label>
+                                    </volist>
+                                </if> 
+                                
+                            </div>
+                            <button class="am-btn am-btn-secondary" type="submit">
+                                提交
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <include file="Common/footer_content" />
+    </div>
+    <!-- content end -->
+</div>
+
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<include file="Common/footer" />
+<script type="text/javascript">
+$(function(){
+    $('#checkAll').on('change',function(){
+        var checkitem = $('.checkitem');
+        if($(this).prop('checked')){
+            checkitem.prop('checked',true);
+        }else{
+            checkitem.prop('checked',false);
+        }
+    })
+})
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<include file="Common/header" />
+<div class="am-cf admin-main">
+    <include file="Common/sidebar" />
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-padding" id="button-wrap">
+                <button type="button" class="am-btn am-btn-default">年度会员增长</button>
+                <button type="button" class="am-btn am-btn-primary">月度会员增长</button>
+                <button type="button" class="am-btn am-btn-secondary">日度会员增长</button>
+            </div>
+            <hr>
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <div id="main" style="width: 100%;height: 60vh;"></div>
+                </div>
+            </div>
+        </div>
+        <include file="Common/footer_content" />
+    </div>
+</div>
+<include file="Common/footer" />
+<script src="__PUBLIC__/smi/js/echarts.min.js"></script>
+<script>
+$(function() {
+    // 后台传来的数据
+    var data = {$data};
+    var chartData = data['day'];
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    var colors = ['#5793f3', '#d14a61', '#675bba'];
+    var option = {
+        color: colors,
+        title: {
+            text: '会员增长趋势'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data: ['会员增长数']
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                magicType: {show: true, type: ['stack', 'tiled']},
+                saveAsImage: {show: true}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            data: chartData['time']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            name: '会员增长数',
+            type: 'line', // 折线图
+            smooth: true,
+            data: chartData['total']
+        }]
+    };
+    // 初始化页面
+    myChart.setOption(option);
+   
+    
+    $('#button-wrap').on('click','.am-btn',function(){
+        var index = $(this).index();
+        // 获取年月日的数据
+        switch(index){
+            case 0:
+                chartData = data['year'];
+                
+                break;
+            case 1:
+                chartData = data['month'];
+                break;
+            case 2:
+                chartData = data['day'];
+                break;
+        }
+        // 指定图表的配置项和数据
+        myChart.setOption({
+            xAxis: {
+                data: chartData['time']
+            },
+            series: [{
+                data: chartData['total']
+            }]
+        });
+        
+    })
+   
+})
+</script>

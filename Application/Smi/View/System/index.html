@@ -1,0 +1,83 @@
+<include file="Common/header" />
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <include file="Common/sidebar" />
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">系统设置</strong> <small></small></div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-4">
+                    <a href="__URL__/auth" class="am-btn am-btn-primary btn-loading-example">权限列表</a>
+                    <a href="__URL__/group" class="am-btn am-btn-primary btn-loading-example">管理组列表</a>
+                    <a href="__URL__/admin_add" class="am-btn am-btn-primary btn-loading-example">添加</a>
+                </div>
+                
+            </div>
+            <!--  -->
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <table class="am-table">
+                        <thead>
+                            <tr>
+                                <th>管理员ID</th>
+                                <th>管理员名</th>
+                                <th>所属管理员组</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="list" id="res">
+                                <tr>
+                                    <td>{$res['id']}</td>
+                                    <td>{$res['name']}</td>
+                                    <td>{$res['title']}</td>
+                                    <td>
+                                        <eq name="res.id" value="1">
+                                            <button class="am-btn am-primary">
+                                                无权操作
+                                            </button> 
+                                                
+                                        <else />
+                                            <a href="__URL__/admin_update/id/{$res['id']}" class=" am-icon-pencil am-secondary am-icon-sm " title="编辑"></a>
+                                            <a href="__URL__/admin_del/id/{$res['id']}" class="am-warning am-icon-trash am-icon-sm " title="删除"></a>
+                                        </eq>
+                                        
+                                    </td>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                    {$page}
+                </div>
+            </div>
+        </div>
+        <footer class="admin-content-footer">
+            <hr>
+            <p class="am-padding-left">© 2017 AllMobilize, Inc. Licensed under MIT license.</p>
+        </footer>
+    </div>
+    <!-- content end -->
+</div>
+
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/smi/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/smi/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/smi/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/smi/js/app.js"></script>
+<script type="text/javascript">
+
+
+</script>
+</body>
+
+</html>

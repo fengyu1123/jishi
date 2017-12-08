@@ -1,0 +1,116 @@
+<include file="Common/header" />
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <include file="Common/sidebar" />
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">门店管理</strong> <small></small></div>
+            </div>
+            <hr/> &nbsp;&nbsp;&nbsp;
+            <a href="{:U('LineShop/add_store')}" class="am-btn am-btn-primary btn-loading-example">增加门店</a>
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <table class="am-table am-table-bd am-table-striped admin-content-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>门店名称</th>
+                                <th>门店类型</th>
+                                <th>负责人</th>
+                                <th>固定电话</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <foreach name="stores" item="v">
+                                <tr>
+                                    <td>{$v['id']}</td>
+                                    <td>{$v['name']}</td>
+                                    <td>
+                                        <if condition="$v['level'] eq 1">直营店
+                                            <elseif condition="$v['level'] eq 2" />体验店</if>
+                                    </td>
+                                    <td>{$v['wx_nickname']}</td>
+                                    <td>{$v['phone']}</td>
+                                    <td class="six">
+                                        <if condition="$v['status'] eq 0">禁用
+                                            <else/>启用</if>
+                                    </td>
+                                    <td>
+                                        <a class="am-btn am-btn-default">详情</a> |
+                                        <button class="am-btn am-btn-default off" data-id="{$v['id']}" data-status="{$v['status']}">
+                                            <if condition="$v['status'] eq 0">
+                                                启用
+                                                <else/> 禁用
+                                            </if>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </foreach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <footer class="admin-content-footer">
+            <hr>
+            <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+        </footer>
+    </div>
+    <!-- content end -->
+</div>
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/smi/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/smi/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/smi/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/smi/js/app.js"></script>
+<script type="text/javascript">
+$(function() {
+
+    $(".off").click(
+
+        function() {
+            var id = $(this).attr('data-id');
+            var status = $(this).attr('data-status');
+            var _that = $(this);
+            $.ajax({
+                type: "POST",
+                url: "{:U('LineShop/Off')}",
+                data: {
+                    'id': id,
+                    'status': status
+                },
+                success: function(data) {
+                    if (data == 1) {
+                        if (status == 0) {
+                            _that.text('禁用');
+                            _that.parents("tr").find(".six").text('启用');
+
+                        }else {
+                            _that.text('启用');
+                            _that.parents("tr").find(".six").text('禁用');
+
+                        }
+                    } else {
+                        alert('出现未知错误');
+                    }
+                }
+            })
+        }
+    )
+
+})
+</script>
+</body>
+
+</html>

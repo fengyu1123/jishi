@@ -1,0 +1,163 @@
+<include file="Common/header"/>
+<style>
+.am-form-horizontal .am-form-label {
+    padding-top: 0;
+}
+</style>
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <include file="Common/sidebar"/>
+  <!-- sidebar end -->
+  <!-- content start -->
+<div class="admin-content">
+    <div class="admin-content-body">
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">
+                编辑分类
+            </strong></div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-12">
+                <div class="am-g">
+                    <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8"></div>
+                    <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+                        <form method="post" action="{:U('Category/addtype')}" enctype="multipart/form-data" class="am-form am-form-horizontal">
+                            <div class="am-form-group">
+                                <if condition="$data['level'] eq 2">
+                                <label for="user-name" class="am-u-sm-3 am-form-label">上级</label>
+                                <div class="am-u-sm-9">
+                                    {$data['Pdata']['name']}
+                                </div>
+                                </if>
+                            </div>
+
+                            <div class="am-form-group">
+                                <label for="user-phone" class="am-u-sm-3 am-form-label">排序</label>
+                                <div class="am-u-sm-9">
+                                    <input type="text" name="displayorder" value="{$data['displayorder']}" id="user-phone" placeholder="排序 / 数字越大越靠前">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label for="" class="am-u-sm-3 am-form-label">分类名称</label>
+                                <div class="am-u-sm-9">
+                                    <input type="text" name="name" value="{$data['name']}" id="" placeholder="分类名称">
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <label for="user-QQ" class="am-u-sm-3 am-form-label">图片</label>
+                                <div class="am-u-sm-9">
+                                    <input type="file" name="thumb" value="">
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <label for="user-weibo" class="am-u-sm-3 am-form-label">图片跳转地址</label>
+                                <div class="am-u-sm-9">
+                                    <input type="text" name="link" value="{$data['link']}" id="user-weibo" placeholder="图片的跳转地址">
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <label for="user-weibo" class="am-u-sm-3 am-form-label">是否显示</label>
+                                <div class="am-u-sm-9">
+                                    <input type="radio" <if condition="$data['enabled'] eq 1">checked </if> value="1" name="enabled">是
+                                    <input type="radio" <if condition="$data['enabled'] eq 2">checked </if> value="2" name="enabled">否
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <label for="user-weibo"  class="am-u-sm-3 am-form-label">是否推荐</label>
+                                <div class="am-u-sm-9">
+                                    <input type="radio" <if condition="$data['isrecommand'] eq 1">checked </if> value="1" name="isrecommand">是
+                                    <input type="radio" <if condition="$data['isrecommand'] eq 2">checked </if> value="2" name="isrecommand">否
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <div class="am-u-sm-9 am-u-sm-push-3">
+                                    <button type="submit" class="am-btn am-btn-primary">确认</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Common/footer_content" />
+  </div>
+  <!-- content end -->
+
+</div>
+
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+
+<include file="Common/footer" />
+
+<script type="text/javascript">
+    $(function(){
+            var yuanshi = "{$data['parentid']}";
+            if(parseInt(yuanshi) > 0){
+                var ds = "{$data['level']}";
+                $.ajax({
+                    url:"{:U('Category/ajaxlevel')}",
+                    type:'post',
+                    data:{'level':ds},
+                    success:function(res){
+                        if(res== -1){
+                            alert('参数丢失');
+                            return false;
+                        }
+                        if(res == -2){
+                            alert('没有该等级');
+                            return false;
+                        }
+                        var parentStr = '';
+                        $(res).each(function(index, item){
+                            parentStr += "<option value='"+item.id+"'>"+item.name+"</option>"
+                        })
+                        $("select[name='parentid']").empty().append(parentStr);
+                    }
+                },'json');
+                $("#secendtype").show();
+            }else{
+                $("#secendtype").hide();
+            }
+            
+            // $('#st').change(function(e){
+            //     var dd = $(this).val();
+            //     if(dd > 1){
+            //         // if(dd == 2){
+            //             $.ajax({
+            //                 url:"{:U('Category/ajaxlevel')}",
+            //                 type:'post',
+            //                 data:{'level':dd},
+            //                 success:function(res){
+            //                     if(res== -1){
+            //                         alert('参数丢失');
+            //                         return false;
+            //                     }
+            //                     if(res == -2){
+            //                         alert('没有该等级');
+            //                         return false;
+            //                     }
+            //                     var parentStr = '';
+            //                     $(res).each(function(index, item){
+            //                         parentStr += "<option value='"+item.id+"'>"+item.name+"</option>"
+            //                     })
+            //                     $("select[name='parentid']").empty().append(parentStr);
+            //                 }
+            //             },'json');
+                        
+            //         // }
+            //         $("#secendtype").show();
+            //     }else if(dd == '' || dd == 1){
+            //         $("#secendtype").hide();
+            //     }
+                
+            // })
+        });
+</script>
+</body>
+</html>

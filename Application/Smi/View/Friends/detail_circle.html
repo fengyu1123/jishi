@@ -1,0 +1,177 @@
+<include file="Common/header" />
+	<div class="am-cf admin-main">
+		<include file="Common/sidebar" />
+		<div class="admin-content">
+			<div class="am-cf am-padding">
+                <div class="am-fl am-cf">
+                    <strong class="am-text-primary am-text-lg">氢品圈管理</strong> 
+                    <small></small>
+                </div>
+            </div>
+            <div class="am-g doc-am-g">
+            	<div class="am-u-sm-6 am-u-md-8 am-u-lg-6">
+					<article class="am-comment">
+					    <div class="am-comment-main">
+					        <header class="am-comment-hd">
+					            <div class="am-comment-meta">
+					                <a href="#link-to-user" class="am-comment-author">
+					                    氢友圈内容
+					                </a>
+					                <!-- 创建于
+					                <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 中国北京标准时间+0800">
+					                    {$res['createtime']|date='Y-m-d H:i:s',###}
+					                </time> -->
+					            </div>
+					        </header>
+					        <div class="am-comment-bd">
+					            <table class="am-table">
+								    <tbody>
+								        <tr>
+								            <td width="10%">
+								                标题
+								            </td>
+								            <td>
+								                {$res['title']}
+								            </td>
+								        </tr>
+								        <tr>
+								            <td width="10%">
+								                类型
+								            </td>
+								            <td>
+								                {$res['type']}
+								            </td>
+								        </tr>
+								        <tr>
+								            <td width="10%">
+								                状态
+								            </td>
+								            <td>
+								                <eq name="res['status']" value="0">
+		                                            未审核
+		                                        <else/>
+		                                            已审核
+		                                        </eq>
+								            </td>
+								        </tr>
+								        <tr>
+								        	<td width="10%">
+								                模块
+								            </td>
+								            <td>
+								                <switch name="res.module">
+		                                            <case value="1">氢体验</case>
+		                                            <case value="2">氢专家</case>
+		                                            <case value="3">氢活动</case>
+		                                        </switch>
+								            </td>
+								        </tr>
+								        <tr>
+								        	<td width="10%">
+								                内容
+								            </td>
+								            <td>
+								                {$res['content']}
+								            </td>
+								        </tr>
+								        <tr>
+								        	<td width="10%">
+								                图片
+								            </td>
+								            <td>
+								            	<foreach name="res.img" item="vo">
+												    <img class="am-radius" alt="140*140" src="__ROOT__/Uploads/{$vo}" width="140" height="140" />
+												</foreach>
+								            </td>
+								        </tr>
+								    </tbody>
+								</table>
+					        </div>
+					    </div>
+					</article>
+				</div>
+				<div class="am-u-sm-6 am-u-md-4 am-u-lg-6 am-list-border">
+					<article class="am-comment">
+					    <div class="am-comment-main">
+					        <header class="am-comment-hd">
+					            <div class="am-comment-meta">
+					                <a href="#link-to-user" class="am-comment-author">
+					                    个人信息
+					                </a>
+					                <!-- 创建于
+					                <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 中国北京标准时间+0800">
+					                    {$res['createtime']|date='Y-m-d H:i:s',###}
+					                </time> -->
+					            </div>
+					        </header>
+					        <div class="am-comment-bd">
+					            <table class="am-table">
+								    <tbody>
+								        <tr>
+								            <td>
+								                头像
+								            </td>
+								            <td>
+								                <img class="am-circle" src="{$res['uid']['wx_avatar']}" width="80" />
+								            </td>
+								        </tr>
+								        <tr>
+								            <td>
+								                姓名
+								            </td>
+								            <td>
+								                {$res['uid']['realname']}
+								            </td>
+								        </tr>
+								        <tr>
+								            <td>
+								                昵称
+								            </td>
+								            <td>
+								                {$res['uid']['wx_nickname']}
+								            </td>
+								        </tr>
+								        <tr>
+								            <td>
+								                发表时间
+								            </td>
+								            <td>
+								                {$res['createtime']|date='Y-m-d',###}
+								            </td>
+								        </tr>
+								    </tbody>
+								</table>
+					        </div>
+					    </div>
+					</article>
+					<div class="am-margin-left-sm am-u-sm-12">
+						<foreach name="res['hotcomment']" item="item">
+						    <article class="am-comment am-margin-top-sm">
+							    <a href="#link-to-user-home">
+							        <img src="{$item['uid']['wx_avatar']}" alt="" class="am-comment-avatar" width="48" height="48" />
+							    </a>
+							    <div class="am-comment-main">
+							        <header class="am-comment-hd">
+							            <!--<h3 class="am-comment-title">评论标题</h3>-->
+							            <div class="am-comment-meta">
+							                <a href="#link-to-user" class="am-comment-author">
+							                    {$item['wx_nickname']}
+							                </a>
+							                评论于
+							                <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">
+							                    {$item['createtime']|date="Y-m-d H:i:s",###}
+							                </time>
+							            </div>
+							        </header>
+							        <div class="am-comment-bd">
+							            {$item['content']}
+							        </div>
+							    </div>
+							</article>
+						</foreach>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>

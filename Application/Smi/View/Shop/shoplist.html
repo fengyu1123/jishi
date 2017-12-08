@@ -1,0 +1,76 @@
+<include file="Common/header" />
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <include file="Common/sidebar" classname="am-in"/>
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">商品列表</strong></div>
+            </div>
+            <hr />
+            <div>
+                &nbsp;&nbsp;<a href="{:U('Shop/addgoods')}">
+                    <button type="button" class="am-btn am-btn-secondary">添加商品</button>
+                </a>
+            </div>
+            <hr />
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <table class="am-table am-table-bd am-table-striped admin-content-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>排序</th>
+                                <th>商品</th>
+                                <th>商品属性</th>
+                                <th>价格</th>
+                                <th>竞争数量</th>
+                                <!-- <th>创建暗</th> -->
+                                <!-- <th>商品编码</th> -->
+                                <th>状态</th>
+                                <th>管理</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="data" id="vo">
+                                <tr>
+                                    <td>{$vo['id']}</td>
+                                    <td><img src="__ROOT__/Uploads/{$vo['prizeimg']}" height="20"></td>
+                                    <td>{$vo['goodsname']}</td>
+                                    <td>{$vo['attr']}</td>
+                                    <td>{$vo['price']}</td>
+                                    <td>{$vo['surplusnum']}</td>
+                                    <!-- <td>{$vo['bug_num']}</td> -->
+                                    <td>{$vo['status']}</td>
+                                    <td>
+                                        <div class="am-dropdown" data-am-dropdown>
+                                            <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
+                                                <span class="am-icon-cog"></span>
+                                                <span class="am-icon-caret-down"></span>
+                                            </button>
+                                            <ul class="am-dropdown-content">
+                                                <li><a href="{:U('Shop/edit',array('id'=>$vo['id']))}">编辑</a></li>
+                                                <li><a href="{:U('Shop/deletegood',array('id'=>$vo['id']))}" onclick="if(confirm('确定删除该分类吗？')==false)return false;">删除</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </volist>
+                        </tbody>
+                        <tr>
+                            <td colspan="9">{$page}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Common/footer_content" />
+</div>
+<!-- content end -->
+</div>
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<include file="Common/footer" />

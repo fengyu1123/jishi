@@ -1,0 +1,96 @@
+<include file="Common/header"/>
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <include file="Common/sidebar"/>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+<div class="admin-content">
+    <div class="admin-content-body">
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加问题</strong>  <small></small></div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-12">
+                <div class="am-g">
+                    <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8"></div>
+                    <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+                        <form method="post" action="{:U('Selfhelp/addquestion')}" enctype="multipart/form-data" class="am-form am-form-horizontal">
+                        <input type="hidden" name="id" value="{$data['id']}" >
+                            <div class="am-form-group">
+                                <label for="user-email" class="am-u-sm-3 am-form-label">标题</label>
+                                <div class="am-u-sm-9">
+                                    <input type="text" name="title" value="{$data['title']}" id="user-email" placeholder="标题">
+                                    <small></small>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label for="user-intro" class="am-u-sm-3 am-form-label">内容描述</label>
+                                <div class="am-u-sm-9">
+                                    <script id="container" name="content" type="text/plain" style="height: 500px;">                                      
+                                        {$data['content']|html_entity_decode}
+                                    </script>                                   
+                                    <!-- <textarea class="" rows="5" name="content" id="container user-intro" placeholder="商品描述"></textarea> -->
+                                <small></small>
+                                </div>
+                            </div>
+
+                             <div class="am-form-group">
+                               <label for="user-name" class="am-u-sm-3 am-form-label">类型
+                               </label>
+                               <div class="am-u-sm-9">
+                                   <select name="type" id="st">                   
+                                       <option <if condition="$data['type'] eq 1">selected="selected"</if> value="1">常见问题</option>
+                                       <option <if condition="$data['type'] eq 2">selected="selected"</if> value="2">退货声明</option>
+                                       <option <if condition="$data['type'] eq 3">selected="selected"</if> value="3">发票声明</option>
+                                        <option <if condition="$data['type'] eq 4">selected="selected"</if> value="4">换货声明</option>
+                                   </select>
+                                   <small></small>
+                               </div>
+                           </div>                                              
+                            <div class="am-form-group">
+                                <div class="am-u-sm-9 am-u-sm-push-3">
+                                    <button type="submit" class="am-btn am-btn-primary">确认</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="admin-content-footer">
+      <hr>
+      <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+    </footer>
+  </div>
+  <!-- content end -->
+</div>
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/smi/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/smi/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/smi/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/smi/js/app.js"></script>
+<script src="__PUBLIC__/smi/js/jquery.min.js"></script>
+
+<!-- 编辑器 -->
+<!-- 加载编辑器的容器 -->
+    
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('container');
+    </script>
+
+</body>
+</html>

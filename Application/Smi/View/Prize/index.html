@@ -1,0 +1,254 @@
+<include file="Common/header" />
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <include file="Common/sidebar" />
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+			
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf">
+                    <strong class="am-text-primary am-text-lg">
+                        首页
+                    </strong>
+                    /
+                    <small>
+                        一些常用模块
+                    </small>
+                </div>
+            </div>
+            <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
+                <li>
+                    <a href="__URL__/index/sta/1" class="am-text-success">
+                        <span class="am-icon-btn am-icon-file-text">
+                        </span>
+                        <br/>
+                        已中奖
+                        
+                    </a>
+                </li>
+                <li>
+                    <a href="__URL__/index/sta/-1" class="am-text-warning">
+                        <span class="am-icon-btn am-icon-briefcase">
+                        </span>
+                        <br/>
+                        未中奖                       
+                    </a>
+                </li>
+				<li>
+                    <a href="__URL__/index/sta/2" class="am-text-secondary">
+                        <span class="am-icon-btn am-icon-user-md">
+                        </span>
+                        <br/>
+                        已发送
+                                                
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="am-g ">
+				<div class="am-u-sm-12 am-u-md-3 am-fr">
+					<form action="" method="get">
+                    <div class="am-input-group am-input-group-sm">
+                        <input type="text" name="keyword" class="am-form-field" value="{$_GET['keyword']}" placeholder="手机号码">
+                        <span class="am-input-group-btn">
+                        <button class="am-btn am-btn-default" type="submit">搜索</button>
+                      </span>
+                    </div>
+					</form>
+                </div>
+                <div class="am-u-sm-12">
+                    <table class="am-table am-table-bd am-table-striped admin-content-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <!-- <th>
+                                    奖品图
+                                </th> -->
+                                <th>
+                                    奖品名
+                                </th>
+                                <th>
+                                    用户
+                                </th>
+                                <th>
+                                    购买数量
+                                </th>
+								<th>
+                                    开奖码
+                                </th>
+								<th>
+                                    中奖期数
+                                </th>
+								<th>
+                                    选择类型
+                                </th>
+								<th>
+                                    状态
+                                </th>
+								<th>
+                                    获得时间
+                                </th>
+								<th>
+                                    管理
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+							<volist name="list" id="res">
+								<tr>
+									<td>
+										{$res['id']}
+									</td>
+									<!-- <td>
+										<img src="__ROOT__/Uploads/{$res['prizeimg']}" height="20">
+									</td> -->
+									<td>
+										{$res['phone']}
+									</td>
+									<td>
+										{$res['prizename']}
+									</td>
+									<td>
+										<span class="am-badge am-badge-success">
+											+{$res['num']}
+										</span>
+									</td>
+									<td>
+										{$res['opencode']}
+									</td>
+									<td>
+										{$res['periodnum']}
+									</td>
+									<td>
+										<switch name="res['type']">
+											<case value="1">收货</case>
+											<case value="2">提现转支付宝</case>
+											<case value="3">提现到余额</case>
+										</switch>
+									</td>
+									<td>
+										<switch name="res['status']">
+											<case value="-1">未中奖</case>
+											<case value="0">未开奖</case>
+											<case value="1">中奖</case>
+											<case value="2">已发送</case>
+										</switch>
+									</td>
+									<td>
+										{$res['ctime']|date='Y-m-d H:i:s',###}
+									</td>
+									<td>
+										<div class="am-dropdown" data-am-dropdown>
+											<button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
+												<span class="am-icon-cog">
+												</span>
+												<span class="am-icon-caret-down">
+												</span>
+											</button>
+											<ul class="am-dropdown-content">
+												<li>
+													<a href="__URL__/detail/id/{$res['id']}">
+														1. 详情
+													</a>
+												</li>
+												
+												<switch name="res['status']">													
+													<case value="1"><li><a href="__URL__/setStatus/id/{$res['id']}">2. 已发送</a></li></case>	
+													<case value="2"><li><a class="doc-prompt-toggle" data-id='{$res['id']}'>2. 编写物流</a></li></case>
+												</switch>
+												
+											</ul>
+										</div>
+									</td>
+								</tr> 
+							</volist>
+							<tr colspan="10"></tr>
+                        </tbody>
+                    </table>
+					{$page}
+                </div>
+            </div>
+        </div>
+        <footer class="admin-content-footer">
+            <hr>
+            <p class="am-padding-left">
+                © 2014 AllMobilize, Inc. Licensed under MIT license.
+            </p>
+        </footer>
+    </div>
+    <!-- content end -->
+</div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">
+            Amaze UI
+        </div>
+        <div class="am-modal-bd">			
+            填写物流号
+            <input type="text" name='logisticsSN' class="am-modal-prompt-input">
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>
+                取消
+            </span>
+            <span class="am-modal-btn" data-am-modal-confirm>
+                提交
+            </span>
+        </div>
+    </div>
+</div>
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu"
+data-am-offcanvas="{target: '#admin-offcanvas'}">
+</a>
+<!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js">
+    </script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js">
+    </script>
+    <script src="__PUBLIC__/smi/js/amazeui.ie8polyfill.min.js">
+    </script>
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]>
+    <!-->
+<!--<![endif]-->
+<script src="__PUBLIC__/smi/js/jquery.min.js">
+    </script>
+<script src="__PUBLIC__/smi/js/amazeui.min.js">
+</script>
+<script src="__PUBLIC__/smi/js/app.js">
+</script>
+<script>
+$(function() {
+    $('.doc-prompt-toggle').on('click',
+    function() {
+		var id = $(this).attr('data-id');
+        $('#my-prompt').modal({
+            relatedTarget: this,
+            onConfirm: function(e) {
+                $.ajax({
+					type: "post",
+					url: "__URL__/setLogistics",
+					data: {
+						"id": id,
+						'logisticsSN':e.data
+					},
+					success: function(data) {
+					   if(data){
+							alert('填写成功');
+					   }
+					}
+				})
+            },
+            onCancel: function(e) {
+                
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

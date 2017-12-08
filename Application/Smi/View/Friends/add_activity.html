@@ -1,0 +1,165 @@
+<include file="Common/header"/>
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <include file="Common/sidebar"/>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+<div class="admin-content">
+    <div class="admin-content-body">
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加氢活动</strong>  <small></small></div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-12">
+                <div class="am-g">
+                    <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8"></div>
+                    <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+                        <form method="post" action="" enctype="multipart/form-data" class="am-form am-form-horizontal">
+
+                            <div class="am-form-group">
+                                <label for="user-phone" class="am-u-sm-3 am-form-label">排序</label>
+                                <div class="am-u-sm-9">
+                                    <input type="tel" name="displayorder" value="{$res['displayorder']}" id="user-phone" placeholder="排序 / 数字越大越靠前">
+                                    <input type="hidden" name="id" value="{$res['id']}">
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <label for="user-email" class="am-u-sm-3 am-form-label">标题</label>
+                                <div class="am-u-sm-9">
+                                    <input type="text" name="title" value="{$res['title']}" id="user-email" placeholder="标题">
+                                    <small></small>
+                                </div>
+                            </div>
+
+
+                            <div class="am-form-group hidden" id="secendtype">
+                                <label for="user-email" class="am-u-sm-3 am-form-label">简介</label>
+                                <div class="am-u-sm-9">
+                                    <input type="text" name="introduction" value="{$res['introduction']}" placeholder="简介">
+                                    <small></small>
+                                </div>
+                            </div>
+
+
+                            <!-- <div class="am-form-group">
+                                <label for="user-weibo" class="am-u-sm-3 am-form-label">状态</label>
+                                <div class="am-u-sm-9">
+                                    未上架
+                                </div>
+                            </div> -->
+                            <div class="am-form-group">
+                                <label for="img" class="am-u-sm-3 am-form-label">封面图片</label>
+                                <div class="am-u-sm-6">
+                                    <input type="file" name="img" id="img" value="">
+                                    <div id="file-list" >
+                                        <if condition="$res['img'] neq ''">
+                                            <img class="am-radius" id="imgTmp" alt="140*140" src="__ROOT__/Uploads/{$res['img']}" width="300" />
+                                        <else />
+                                            <img class="am-radius" id="imgTmp" alt="140*140" src="__PUBLIC__/Home/img/banner.jpg" width="300" />
+                                        </if>
+                                    </div>
+                                </div>
+                                <div class="am-u-sm-1"></div>
+                                    
+                            </div>
+                            
+                            
+                            <!-- <div class="am-form-group">
+                                <div id="file-list">
+                                        <if condition="$res['img'] neq ''">
+                                            <img class="am-radius" id="imgTmp" alt="140*140" src="__ROOT__/Uploads/{$res['img']}" width="140" />
+                                        <else />
+                                            <img class="am-radius" id="imgTmp" alt="140*140" src="__PUBLIC__/Home/img/banner.jpg" width="300" />
+                                        </if>
+                                    </div>
+                            </div> -->
+                            
+                            <div class="am-form-group">
+                                <label for="user-intro" class="am-u-sm-3 am-form-label">商品描述</label>
+                                <div class="am-u-sm-9">
+                                    <script id="container" name="content" type="text/plain" style="height: 500px;">
+                                        {$res['content']|html_entity_decode}        
+                                    </script>
+                                
+                                    <!-- <textarea class="" rows="5" name="content" id="container user-intro" placeholder="商品描述"></textarea> -->
+                                <small></small>
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <div class="am-u-sm-9 am-u-sm-push-3">
+                                    <button type="submit" class="am-btn am-btn-primary">确认</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="admin-content-footer">
+      <hr>
+      <p class="am-padding-left">© 2017 AllMobilize, Inc. Licensed under MIT license.</p>
+    </footer>
+  </div>
+  <!-- content end -->
+
+</div>
+
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/smi/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/smi/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/smi/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/smi/js/app.js"></script>
+<script src="__PUBLIC__/smi/js/jquery.min.js"></script>
+<!-- 编辑器 -->
+<!-- 加载编辑器的容器 -->
+    
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('container');
+    </script>
+<script type="text/javascript">
+    /*var obj = <?php echo $typedata; ?>;
+    var tbody = "";
+
+    $.each(obj, function (n, value) {
+        alert(value.id);
+        var trs = "";
+        trs += "<tr><td>" + value.name + "</td> <td>" + value.password + "</td></tr>";
+        tbody += trs;
+    });
+    tbody = obj[2].secondary[0].name;
+    console.log(obj);
+    console.log(tbody);*/
+    $(function() {
+        $('#img').on('change', function() {
+            var fileNames = '';
+            var $target = $($(this).data("target"));
+            var srcUrl = "";
+            URL.createObjectURL?srcUrl = URL.createObjectURL(this.files[0]):srcUrl = window.webkitURL.createObjectURL(this.files[0]);
+
+            $("#imgTmp").attr("src",srcUrl);
+            // console.log(srcUrl);
+            /*$.each(this.files, function() {
+              fileNames += '<span class="am-badge">' + this.name + '</span> ';
+            });*/
+            // $('#file-list').html(fileNames);
+        });
+    });
+</script>
